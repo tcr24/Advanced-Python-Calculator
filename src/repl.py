@@ -11,6 +11,8 @@ class REPL:
             'subtract': self.subtract,
             'multiply': self.multiply,
             'divide': self.divide,
+            'save': self.save_history,
+            'load': self.load_history,
             'exit': self.exit,
             'plugins': self.list_plugins
         }
@@ -49,6 +51,14 @@ class REPL:
         result = self.calculator.divide(float(a), float(b))
         print(result)
 
+    def save_history(self, filename):
+        self.calculator.save_history(filename)
+        print(f"History saved to {filename}")
+
+    def load_history(self, filename):
+        self.calculator.load_history(filename)
+        print(f"History loaded from {filename}")
+
     def exit(self):
         print("Exiting the calculator.")
         exit()
@@ -57,4 +67,3 @@ class REPL:
         print("Available plugins:")
         for plugin in self.plugin_manager.get_plugins():
             print(f"- {plugin}")
-
