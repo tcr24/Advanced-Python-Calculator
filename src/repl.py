@@ -1,9 +1,9 @@
-from calculator import Calculator
+from calculator import CalculatorFacade
 from plugin_manager import PluginManager
 
 class REPL:
     def __init__(self):
-        self.calculator = Calculator()
+        self.calculator = CalculatorFacade()
         self.plugin_manager = PluginManager()
         self.plugin_manager.load_plugins()
         self.commands = {
@@ -36,27 +36,27 @@ class REPL:
             self.commands[name] = plugin.main
 
     def add(self, a, b):
-        result = self.calculator.add(float(a), float(b))
+        result = self.calculator.perform_operation('add', float(a), float(b))
         print(result)
 
     def subtract(self, a, b):
-        result = self.calculator.subtract(float(a), float(b))
+        result = self.calculator.perform_operation('subtract', float(a), float(b))
         print(result)
 
     def multiply(self, a, b):
-        result = self.calculator.multiply(float(a), float(b))
+        result = self.calculator.perform_operation('multiply', float(a), float(b))
         print(result)
 
     def divide(self, a, b):
-        result = self.calculator.divide(float(a), float(b))
+        result = self.calculator.perform_operation('divide', float(a), float(b))
         print(result)
 
     def save_history(self, filename):
-        self.calculator.save_history(filename)
+        self.calculator.calculator.save_history(filename)
         print(f"History saved to {filename}")
 
     def load_history(self, filename):
-        self.calculator.load_history(filename)
+        self.calculator.calculator.load_history(filename)
         print(f"History loaded from {filename}")
 
     def exit(self):

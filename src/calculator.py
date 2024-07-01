@@ -49,3 +49,20 @@ class Calculator:
     def load_history(self, filename):
         self.history = pd.read_csv(filename)
         logging.info(f"History loaded from {filename}")
+
+class CalculatorFacade:
+    def __init__(self):
+        self.calculator = Calculator()
+
+    def perform_operation(self, operation, a, b):
+        if operation == 'add':
+            return self.calculator.add(a, b)
+        elif operation == 'subtract':
+            return self.calculator.subtract(a, b)
+        elif operation == 'multiply':
+            return self.calculator.multiply(a, b)
+        elif operation == 'divide':
+            return self.calculator.divide(a, b)
+        else:
+            logging.error(f"Unknown operation: {operation}")
+            raise ValueError(f"Unknown operation: {operation}")
