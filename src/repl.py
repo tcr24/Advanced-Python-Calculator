@@ -1,16 +1,20 @@
-# src/repl.py
 from calculator import Calculator
+from plugin_manager import PluginManager
 
 class REPL:
     def __init__(self):
         self.calculator = Calculator()
+        self.plugin_manager = PluginManager()
+        self.plugin_manager.load_plugins()
         self.commands = {
             'add': self.add,
             'subtract': self.subtract,
             'multiply': self.multiply,
             'divide': self.divide,
-            'exit': self.exit
+            'exit': self.exit,
+            'plugins': self.list_plugins
         }
+        self.load_plugin_commands()
 
     def start(self):
         while True:
@@ -24,6 +28,10 @@ class REPL:
                     print(f"Error: {e}")
             else:
                 print(f"Unknown command: {command}")
+
+    def load_plugin_commands(self):
+        for name, plugin in self.plugin_manager.get_plugins().items():
+            self.commands[name] = plugin.main
 
     def add(self, a, b):
         result = self.calculator.add(float(a), float(b))
@@ -44,3 +52,9 @@ class REPL:
     def exit(self):
         print("Exiting the calculator.")
         exit()
+
+    def list_plugins(self):
+        print("Available plugins:")
+        for plugin in self.plugin_manager.get_plugins():
+            print(f"- {plugin}")
+
