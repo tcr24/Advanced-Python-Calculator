@@ -3,12 +3,12 @@
 import sys
 import os
 
+from calculator import CalculatorFacade
+from plugin_manager import PluginManager
+
 # Add the src and plugins directories to the Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'plugins'))
-
-from calculator import CalculatorFacade
-from plugin_manager import PluginManager
 
 class REPL:
     """Read-Eval-Print Loop (REPL) for the advanced calculator."""
