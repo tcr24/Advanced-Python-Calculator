@@ -1,3 +1,5 @@
+"""Calculator module for advanced calculator."""
+
 import logging
 import pandas as pd
 
@@ -76,12 +78,11 @@ class CalculatorFacade:
         """Perform the specified operation with the given operands."""
         if operation == 'add':
             return self.calculator.add(a, b)
-        elif operation == 'subtract':
+        if operation == 'subtract':
             return self.calculator.subtract(a, b)
-        elif operation == 'multiply':
+        if operation == 'multiply':
             return self.calculator.multiply(a, b)
-        elif operation == 'divide':
+        if operation == 'divide':
             return self.calculator.divide(a, b)
-        else:
-            logging.error("Unknown operation: %s", operation)
-            raise ValueError(f"Unknown operation: {operation}")
+        logging.error("Unknown operation: %s", operation)
+        raise ValueError(f"Unknown operation: {operation}")
