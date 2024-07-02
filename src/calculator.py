@@ -39,7 +39,8 @@ class Calculator:
             raise ValueError("Cannot divide by zero.")
         result = a / b
         self._save_history('divide', a, b, result)
-        logging.info("Divided %s by %s to get %s", a, b, result)
+        logging.info("Divided %s by %s to get %s", 
+                     a, b, result)
         return result
 
     def _save_history(self, operation, a, b, result):
