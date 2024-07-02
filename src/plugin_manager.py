@@ -1,4 +1,4 @@
-"""Plugin manager for loading and handling plugins."""
+"""Plugin manager for the advanced calculator."""
 
 import importlib
 import os
@@ -15,7 +15,7 @@ class PluginManager:
         for filename in os.listdir(self.plugin_folder):
             if filename.endswith('.py') and filename != '__init__.py':
                 plugin_name = filename[:-3]
-                module = importlib.import_module(f'{self.plugin_folder}.{plugin_name}')
+                module = importlib.import_module(plugin_name)
                 self.plugins[plugin_name] = module
 
     def get_plugins(self):
