@@ -12,97 +12,109 @@ This project is an advanced Python-based calculator that I developed for my Soft
 - Comprehensive logging
 - Command-line interface (REPL)
 
-## Setup
+# Setup
 
 1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/<your-username>/Advanced-Python-Calculator.git
-   cd Advanced-Python-Calculator
-Create and activate a virtual environment:
 
-bash
+
+## Create and activate a virtual environment:
+
 Copy code
 python3 -m venv venv
 source venv/bin/activate
 Install dependencies:
 
-bash
 Copy code
 pip install -r requirements.txt
 Usage
 Run the REPL:
 
-bash
 Copy code
 python src/repl.py
-Available commands:
 
-add <a> <b>: Adds a and b.
 
-subtract <a> <b>: Subtracts b from a.
+## Available commands:
 
-multiply <a> <b>: Multiplies a and b.
+add <a> <b>: 
+Adds a and b.
 
-divide <a> <b>: Divides a by b.
+subtract <a> <b>: 
+Subtracts b from a.
 
-save <filename>: Saves the calculation history to filename.
+multiply <a> <b>: 
+Multiplies a and b.
 
-load <filename>: Loads the calculation history from filename.
+divide <a> <b>: 
+Divides a by b.
+
+save <filename>: 
+Saves the calculation history to filename.
+
+load <filename>: 
+Loads the calculation history from filename.
 
 plugins: Lists available plugins.
 
 exit: Exits the calculator.
 
-Design Patterns
+## Design Patterns
 
 Facade Pattern
 The CalculatorFacade class provides a simplified interface for performing operations using the Calculator class.
 
-Code: CalculatorFacade in src/calculator.py
+Code: 
+CalculatorFacade in src/calculator.py
 
-Description: This pattern makes it easier to interact with the calculator by providing a unified interface for the arithmetic operations.
+This pattern makes it easier to interact with the calculator by providing a unified interface for the arithmetic operations.
 
 Command Pattern
 The REPL class handles various commands and organizes them effectively.
 
-Code: REPL in src/repl.py
+Code: 
+REPL in src/repl.py
 
-Description: This pattern organizes the commands within the REPL, making it easier to manage and execute commands.
+This pattern organizes the commands within the REPL, making it easier to manage and execute commands.
 
 Plugin System
 The PluginManager class dynamically loads new commands or features without modifying the core application.
 
-Code: PluginManager in src/plugin_manager.py
+Code: 
+PluginManager in src/plugin_manager.py
 
-Description: This system allows new functionalities to be added through plugins without changing the core application.
+This system allows new functionalities to be added through plugins without changing the core application.
 
 Environment Variables
 Environment variables are used to configure logging levels dynamically.
 
-Code: logging configuration in src/calculator.py
+Code: 
+logging configuration in src/calculator.py
 
-Description: The logging level can be set using the LOGGING_LEVEL environment variable, allowing for dynamic control over the verbosity of log messages.
+The logging level can be set using the LOGGING_LEVEL environment variable, allowing for dynamic control over the verbosity of log messages.
 
 Logging
 Logging is implemented to record detailed application operations, data manipulations, errors, and informational messages.
 
-Code: logging configuration in src/calculator.py
+Code: 
+logging configuration in src/calculator.py
 
-Description: Logging is set up using Python's logging module, with messages categorized by severity (INFO, WARNING, ERROR).
+Logging is set up using Python's logging module, with messages categorized by severity (INFO, WARNING, ERROR).
 
 Exception Handling
 The application uses try/catch blocks to handle exceptions, demonstrating both "Look Before You Leap" (LBYL) and "Easier to Ask for Forgiveness than Permission" (EAFP) approaches.
 
 LBYL Example:
 
-Code: divide method in src/calculator.py
-Description: The code checks for potential issues before attempting an operation (like checking for zero before division).
+Code: 
+divide method in src/calculator.py
+
+The code checks for potential issues before attempting an operation (like checking for zero before division).
 
 EAFP Example:
 
-Code: load_history method in src/calculator.py
+Code: 
+load_history method in src/calculator.py
 
-Description: The code tries operations directly and catches exceptions if they happen (like handling file I/O errors).
+The code tries operations directly and catches exceptions if they happen (like handling file I/O errors).
 
 Continuous Integration
 GitHub Actions is used for continuous integration, making sure that all tests pass on every push and pull request.
@@ -111,7 +123,6 @@ CI Configuration: .github/workflows/python-app.yml
 Tests
 Tests are written using pytest and can be run with:
 
-bash
 Copy code
 pytest
 
