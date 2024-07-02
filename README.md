@@ -1,8 +1,11 @@
 # Advanced Python Calculator
 
+Tristan Rubiano
+IS 218 Summer 2024
+
 ## Overview
 
-This project is an advanced Python-based calculator that I developed for my Software Engineering Graduate Course. It highlights important software development practices like writing clean, maintainable code, using design patterns, logging, configuring with environment variables, handling data with Pandas, and providing a command-line interface (REPL) for real-time user interaction.
+This project is an advanced Python-based calculator that I developed for my IS 218 Midterm. It highlights practices like writing clean, maintainable code, using design patterns, logging, configuring with environment variables, handling data with Pandas, and providing a command-line interface (REPL) for real-time user interaction.
 
 ## Features
 
