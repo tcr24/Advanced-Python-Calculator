@@ -2,10 +2,13 @@
 
 import sys
 import os
+
+# Add the src and plugins directories to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'plugins'))
+
 from calculator import CalculatorFacade
 from plugin_manager import PluginManager
-
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 class REPL:
     """Read-Eval-Print Loop (REPL) for the advanced calculator."""
@@ -22,7 +25,8 @@ class REPL:
             'save': self.save_history,
             'load': self.load_history,
             'exit': self.exit,
-            'plugins': self.list_plugins
+            'plugins': self.list_plugins,
+            'menu': self.menu  # Add the menu command
         }
         self.load_plugin_commands()
 
@@ -87,6 +91,12 @@ class REPL:
         print("Available plugins:")
         for plugin in self.plugin_manager.get_plugins():
             print(f"- {plugin}")
+
+    def menu(self):
+        """List all available commands."""
+        print("Available commands:")
+        for command in self.commands:
+            print(f"- {command}")
 
 if __name__ == "__main__":
     repl = REPL()
