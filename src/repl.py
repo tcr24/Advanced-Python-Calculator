@@ -67,3 +67,7 @@ class REPL:
         print("Available plugins:")
         for plugin in self.plugin_manager.get_plugins():
             print(f"- {plugin}")
+
+if __name__ == "__main__":
+    repl = REPL()
+    repl.start()

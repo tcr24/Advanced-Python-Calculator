@@ -35,12 +35,19 @@ class Calculator:
         return result
 
     def _save_history(self, operation, a, b, result):
-        self.history = self.history.append({
-            'operation': operation,
-            'a': a,
-            'b': b,
-            'result': result
-        }, ignore_index=True)
+        new_entry = pd.DataFrame({
+            'operation': [operation],
+            'a': [a],
+            'b': [b],
+            'result': [result]
+        })
+
+        # Ensure the new entry and history are not all-NA or empty before concatenation
+        if not new_entry.dropna(how='all').empty:
+            if self.history.empty:
+                self.history = new_entry
+            else:
+                self.history = pd.concat([self.history, new_entry.dropna(how='all')], ignore_index=True)
 
     def save_history(self, filename):
         self.history.to_csv(filename, index=False)
@@ -50,6 +57,7 @@ class Calculator:
         self.history = pd.read_csv(filename)
         logging.info(f"History loaded from {filename}")
 
+# Define CalculatorFacade
 class CalculatorFacade:
     def __init__(self):
         self.calculator = Calculator()
