@@ -1,3 +1,5 @@
+"""Plugin manager for loading and handling plugins."""
+
 import importlib
 import os
 
