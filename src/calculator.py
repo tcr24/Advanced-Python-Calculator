@@ -39,8 +39,7 @@ class Calculator:
             raise ValueError("Cannot divide by zero.")
         result = a / b
         self._save_history('divide', a, b, result)
-        logging.info("Divided %s by %s to get %s",
-                     a, b, result)
+        logging.info("Divided %s by %s to get %s", a, b, result)
         return result
 
     def _save_history(self, operation, a, b, result):
@@ -52,13 +51,11 @@ class Calculator:
             'result': [result]
         })
 
-        # Ensure the new entry and history are not all-NA or empty before concatenation
         if not new_entry.dropna(how='all').empty:
             if self.history.empty:
                 self.history = new_entry
             else:
-                self.history = pd.concat([self.history, new_entry.dropna(how='all')],
-                                         ignore_index=True)
+                self.history = pd.concat([self.history, new_entry], ignore_index=True)
 
     def save_history(self, filename):
         """Save the calculation history to a CSV file."""

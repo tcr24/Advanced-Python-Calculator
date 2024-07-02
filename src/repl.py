@@ -26,7 +26,8 @@ class REPL:
             'load': self.load_history,
             'exit': self.exit,
             'plugins': self.list_plugins,
-            'menu': self.menu  # Add the menu command
+            'menu': self.menu,
+            'history': self.history  # Add the history command
         }
         self.load_plugin_commands()
 
@@ -97,6 +98,13 @@ class REPL:
         print("Available commands:")
         for command in self.commands:
             print(f"- {command}")
+
+    def history(self):
+        """Display the calculation history."""
+        if self.calculator.calculator.history.empty:
+            print("No history available.")
+        else:
+            print(self.calculator.calculator.history)
 
 if __name__ == "__main__":
     repl = REPL()
