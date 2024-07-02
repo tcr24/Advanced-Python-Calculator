@@ -86,3 +86,8 @@ class CalculatorFacade:
             return self.calculator.divide(a, b)
         logging.error("Unknown operation: %s", operation)
         raise ValueError(f"Unknown operation: {operation}")
+
+    def reset_history(self):
+        """Reset the calculator's history."""
+        self.calculator.history = pd.DataFrame(columns=['operation', 'a', 'b', 'result'])
+        logging.info("Calculator history has been reset")
